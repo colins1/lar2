@@ -27,11 +27,15 @@
             <input type="text" style="width: 106px;" name="id" class="form-control" id="inputTitle" placeholder="id записи">
             <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
-        @foreach ($todos as $todo)
-            <ul>
-                <li>{{ $todo['title'] }}</li>
-                <li>{{ $todo['description'] }}</li>
-            </ul>
-        @endforeach
+        @if (!isset($todos))
+            <p>Нет задач</p>
+        @else
+            @foreach ($todos as $todo)
+                <ul>
+                    <li>{{ $todo['title'] }}</li>
+                    <li>{{ $todo['description'] }}</li>
+                </ul>
+            @endforeach
+        @endif
     </body>
 </html>

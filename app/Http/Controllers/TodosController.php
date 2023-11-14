@@ -14,7 +14,11 @@ class TodosController extends Controller
      */
     public function index()
     {
-        $todos = Todos::all(); 
+        if (Todos::count() > 0) {
+			$todos = Todos::all();
+		} else {
+			$todos = ['title'=>'Записей нет'];
+		} 
         return view('todo.index', compact('todos')); 
     }
 
